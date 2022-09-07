@@ -39,8 +39,7 @@ def sitemap():
 
 
 
-#ruta GET para todos los personajes y para traer personaje por id
-#si funciona
+## GET para todos los personajes, para traerlos por id ##
 @app.route('/people', methods=['GET'])
 @app.route('/people/<int:people_id>', methods=['GET'])
 def handle_people(people_id=None):
@@ -59,7 +58,7 @@ def handle_people(people_id=None):
 
 
 
-#ruta GET para todos los planetas y para traer los planetas por id
+### GET para todos los planetas y para traer planetas por id###
 @app.route('/planets', methods=['GET'])
 @app.route('/planets/<int:planet_id>', methods=['GET'])
 def handle_planet(planet_id=None):
@@ -78,7 +77,7 @@ def handle_planet(planet_id=None):
 
 
 
-#ruta GET para traer todos los usuarios
+## GET para traer los usuarios##
 @app.route('/users', methods=['GET'])
 def handle_user(user_id=None, nature=None, favorite_id=None):
     if request.method == 'GET':
@@ -89,7 +88,7 @@ def handle_user(user_id=None, nature=None, favorite_id=None):
 
 
 
-#ruta GET para traer el usuario por su id
+## GET para traer el usuario por su id correspondiente###
 @app.route('/users/<int:user_id>', methods=['GET'])
 def handle_user_id(user_id=None, nature=None, favorite_id=None):
     if request.method == 'GET':
@@ -102,7 +101,7 @@ def handle_user_id(user_id=None, nature=None, favorite_id=None):
 
 
 
-#trae toda la lista de favoritos de todos los usuarios
+## para traer toda la lista de favoritos de los usuarios ##
 @app.route('/users/favorite', methods=['GET'])
 def handle_users_favorites():
     if request.method == 'GET':
@@ -114,7 +113,7 @@ def handle_users_favorites():
 
 
 
-#deberia traer los favoritos de solo un usuario
+## para traer los favoritos de un usuario##
 @app.route('/users/<int:user_id>/favorite', methods=['GET'])
 def handle_user_favorite(user_id=None):
     if request.method == 'GET':
@@ -125,7 +124,7 @@ def handle_user_favorite(user_id=None):
 
 
 
-#ruta para hacer post de un favorito segun su naturaleza
+### para hacer post de un favorito por su naturaleza###
 @app.route('/users/<int:user_id>/favorite/<string:nature>/<int:nature_id>', methods=['POST'])
 def handle_favorite_post(user_id = None, nature = None, nature_id=None):
     if request.method == 'POST':
@@ -149,7 +148,7 @@ def handle_favorite_post(user_id = None, nature = None, nature_id=None):
 
 
 
-#ruta para hacer DELETE de un favorito segun su naturaleza
+### DELETE de un favorito segun su naturaleza ##
 @app.route("/<int:user_id>/favorite/<string:nature>/<int:nature_id>/", methods=['DELETE'])
 def handle_favorite_delete(nature_id = None, nature=None, user_id=None):
     if request.method == 'DELETE':
